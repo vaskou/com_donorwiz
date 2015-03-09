@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset name="default" label="COM_USERS_RESET_CONFIRM_LABEL">
+		<field 
+			name="username" 
+			type="email"
+			description="COM_USERS_FIELD_RESET_CONFIRM_USERNAME_DESC"
+			filter="username"
+			label="COM_USERS_FIELD_RESET_CONFIRM_USERNAME_LABEL"
+			required="true"
+			class="uk-form-large uk-width-1-1"
+			validate="email"
+			size="30" 
+			hint="COM_DONOWIZ_REGISTER_EMAIL_HINT"
+			/>
+
+		<field name="token" type="text"
+			description="COM_USERS_FIELD_RESET_CONFIRM_TOKEN_DESC"
+			filter="alnum"
+			label="COM_USERS_FIELD_RESET_CONFIRM_TOKEN_LABEL"
+			required="true"
+			class="uk-form-large uk-width-1-1"
+			size="32" 
+			hint="COM_DONORWIZ_PASSWORD_RESET_CONFIRM_TOKEN"
+			/>
+	</fieldset>
+</form>
