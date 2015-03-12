@@ -7,7 +7,25 @@ $app = JFactory::getApplication();
 
 <div class="uk-panel uk-panel-box uk-panel-dark" data-uk-sticky="{top:76}">
 
-	<ul class="uk-nav uk-nav-side uk-nav-parent-icon" data-uk-nav="">
+	<?php 
+		include_once JPATH_ROOT.'/components/com_community/libraries/core.php';
+		$user = CFactory::getUser();
+		$avatarUrl = $user->getThumbAvatar();
+		$name = $user->getDisplayName();
+	?>
+	<div class="uk-width-1-1 uk-text-center">
+		<img class="uk-thumbnail" src="<?php echo $avatarUrl;?>" alt="<?php echo $name;?>">
+	</div>
+	
+	<div class="uk-width-1-1 uk-margin-small-top">
+		<a class="uk-button uk-button-contrast uk-width-1-1" href="<?php echo JRoute::_('index.php?option=com_donorwiz&view=login&Itemid=314&return='.base64_encode(JFactory::getURI()->toString()).'&'. JSession::getFormToken() .'=1');?>">
+		<i class="uk-icon-power-off"></i>
+		<?php echo JText::_('COM_DONORWIZ_LOGOUT_UPPERCASE');?>
+		</a>
+	</div>
+	
+	
+	<ul class="uk-nav uk-nav-side uk-nav-parent-icon uk-margin-top" data-uk-nav="">
 		
 		<li <?php if ( !$layout ) echo 'class="uk-active"';?>>
 			<a href="<?php echo JRoute::_('index.php?option=com_donorwiz&view=dashboard');?>">
@@ -21,6 +39,7 @@ $app = JFactory::getApplication();
 		
 		<li class="uk-parent">
 			<a href="<?php echo JRoute::_('index.php?option=com_donorwiz&view=dashboard&layout=donations');?>">
+				<i class="uk-icon-euro"></i>
 				<?php echo JText::_('COM_DONORWIZ_DASHBOARD_DONATIONS_VIEW');?>
 			</a>
 		</li>
@@ -34,19 +53,16 @@ $app = JFactory::getApplication();
 		
 		<li <?php if ( $layout == 'volunteering_opportunities' ) echo 'class="uk-active"';?>>
 			<a href="<?php echo JRoute::_('index.php?option=com_donorwiz&view=dashboard&layout=dwopportunities');?>">
+				<i class="uk-icon-th-list"></i>
 				<?php echo JText::_('COM_DONORWIZ_DASHBOARD_MY_VOLUNTEERING_OPPORTUNITIES');?>
 			</a>
 		</li>
 
-		<li <?php if ( $layout == 'volunteers' ) echo 'class="uk-active"';?>>
-			<a href="<?php echo JRoute::_('index.php?option=com_donorwiz&view=dashboard&layout=volunteers');?>">
-				<?php echo JText::_('COM_DONORWIZ_DASHBOARD_MY_VOLUNTEERS');?>
-			</a>
-		</li>
-		
 		<li <?php if ( $layout == 'volunteers_add_opportunity' ) echo 'class="uk-active"';?>>
 			<a href="<?php echo JRoute::_('index.php?option=com_donorwiz&view=dashboard&layout=dwopportunityform');?>">
+				<i class="uk-icon-plus"></i>
 				<?php echo JText::_('COM_DONORWIZ_DASHBOARD_VOLUNTEERS_ADD');?>
+				
 			</a>
 		</li>		
 		
@@ -57,6 +73,7 @@ $app = JFactory::getApplication();
 		<li <?php if ( $layout == 'volunteers_resposnes' ) echo 'class="uk-active"';?>>
 			<a href="<?php echo JRoute::_('index.php?option=com_donorwiz&view=dashboard&layout=volunteers_responses');?>">
 				<?php echo JText::_('COM_DONORWIZ_DASHBOARD_MY_VOLUNTEERS_RESPONSES');?>
+				
 			</a>
 		</li>
 		
