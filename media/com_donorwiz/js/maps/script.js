@@ -23,6 +23,16 @@ jQuery(function($) {
 		
 		});
 		
+		if( mapObjects.length == 0 )
+		{
+			var pt = new google.maps.LatLng(37.983917, 23.729360);
+			map.setCenter(pt);
+			map.setZoom(7);
+
+			
+			return;
+		}
+		
 		oms = new OverlappingMarkerSpiderfier( 
 			map,
 			{
@@ -33,6 +43,8 @@ jQuery(function($) {
 		setMarkers ( map , mapObjects , oms );		
 	
 		map.fitBounds ( getMapBounds ( mapObjects ) );
+		
+		
 		
 	});
 	
@@ -85,12 +97,12 @@ function setMarkers( map , mapObjects ,oms ) {
 function getMapBounds( mapObjects ){
 	
 	var bounds = new google.maps.LatLngBounds ();
-
+	
 	for ( key = 0; key <  mapObjects.length; key++ ) 
-	{
-		var location = mapObjects[key];
-		bounds.extend ( new google.maps.LatLng ( parseFloat(location.lat) , parseFloat(location.lng) ) );
-	}
+		{
+			var location = mapObjects[key];
+			bounds.extend ( new google.maps.LatLng ( parseFloat(location.lat) , parseFloat(location.lng) ) );
+		}
 	
 	return bounds;
 	
@@ -152,12 +164,13 @@ function getMapStyles(){
 			]
 		},
 		{
-			featureType: "poi.business",
-			elementType: "labels",
+			featureType: "poi",
+			elementType: "all",
 				stylers: [
 					{ visibility: "off" }
 				]
 		}
+		
 	];
 
 	return styleArray;
