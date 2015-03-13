@@ -8,7 +8,7 @@ JFactory::getLanguage()->load('com_slogin');
 $return = base64_encode(JFactory::getURI()->toString());
 
 if( JFactory::getApplication()->input->get('return', '', 'BASE64') ){
-	JSession::checkToken( 'get' ) or die( 'Invalid Token' );
+	//JSession::checkToken( 'get' ) or die( 'Invalid Token' );
 	$return = JFactory::getApplication()->input->get('return', '', 'BASE64');
 	
 }
@@ -55,24 +55,6 @@ $dispatcher->trigger('onCreateSloginLink', array(&$plugins, $callbackUrl));
 	
 <div id="slogin-buttons" class="slogin-buttons">
 
-
-<?php //var_dump($plugins); ?>
-<!--
-array (size=2)
-  0 => 
-    array (size=4)
-      'link' => string 'index.php?option=com_slogin&task=auth&plugin=facebook&return=aHR0cDovL3llc2ludGVybmV0LmRldi9kb25vcndpei9pbmRleC5waHA/b3B0aW9uPWNvbV9kb25vcndpeiZ2aWV3PWxvZ2luJkl0ZW1pZD0zMTQmbGFuZz1lbA==' (length=185)
-      'class' => string 'facebookslogin' (length=14)
-      'plugin_name' => string 'facebook' (length=8)
-      'plugin_title' => string 'Facebook' (length=8)
-  1 => 
-    array (size=4)
-      'link' => string 'index.php?option=com_slogin&task=auth&plugin=google&return=aHR0cDovL3llc2ludGVybmV0LmRldi9kb25vcndpei9pbmRleC5waHA/b3B0aW9uPWNvbV9kb25vcndpeiZ2aWV3PWxvZ2luJkl0ZW1pZD0zMTQmbGFuZz1lbA==' (length=183)
-      'class' => string 'googleslogin' (length=12)
-      'plugin_name' => string 'google' (length=6)
-      'plugin_title' => string 'Google' (length=6)
-	  
--->	  
     <?php if (count($plugins)): ?>
     <?php
         foreach($plugins as $link):

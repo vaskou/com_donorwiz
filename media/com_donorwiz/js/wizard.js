@@ -13,13 +13,16 @@ jQuery(function($) {
 		$('.uk-button.published').click(function() {
 			
   			wizardFormStateInput.val('1');
+
 			$('.uk-button.published,.uk-button.unpublished').toggleClass('uk-active');
 		});
 		
 		$('.uk-button.unpublished').click(function() {
 			
   			wizardFormStateInput.val('0');
+
 			$('.uk-button.published,.uk-button.unpublished').toggleClass('uk-active');
+
 		});
 		
 		$('.uk-button.trashed').click(function() {
@@ -29,7 +32,7 @@ jQuery(function($) {
 			var r = confirm(JText_COM_DONORWIZ_WIZARD_TRASH_CONFIRM);
 			
 			if (r == true) {
-				
+
 				wizardFormStateInput.val('-2');
 				wizardForm.trigger('submit');
 				
@@ -76,6 +79,7 @@ jQuery(function($) {
 					
 			}
 			
+
 			$.post( wizardForm.attr( 'action' ), formData , function( response ) 
 			{
 				
@@ -120,6 +124,7 @@ jQuery(function($) {
 
 			
 				waitingModal.hide();
+
 				$.UIkit.notify( "<i class=uk-icon-warning></i> " + JText_COM_DONORWIZ_WIZARD_SAVE_FAIL , { timeout:2000 } );
 			
 			});

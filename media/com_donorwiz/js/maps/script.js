@@ -62,6 +62,7 @@ function setMarkers( map , mapObjects ,oms ) {
 		iw.open(map, marker);
 	});
 
+
 	for ( key = 0; key <  mapObjects.length; key++ ) 
 	{
 		var location = mapObjects[key];
@@ -75,6 +76,7 @@ function setMarkers( map , mapObjects ,oms ) {
 		html += '<a href="'+url+'">Διαβάστε περισσότερα</a>';
 		
 		console.log(siteURL+'media/com_donorwiz/images/mapicons/'+location.causearea+'.png');
+
 		var marker = new google.maps.Marker({
 
 			position: new google.maps.LatLng( parseFloat ( location.lat ) , parseFloat ( location.lng) ),

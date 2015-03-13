@@ -7,7 +7,7 @@ $return = base64_encode(JFactory::getURI()->toString());
 
 if( JFactory::getApplication()->input->get('return', '', 'BASE64') ){
 	
-	JSession::checkToken( 'get' ) or die( 'Invalid Token' );
+	//JSession::checkToken( 'get' ) or die( 'Invalid Token' );
 	$return = JFactory::getApplication()->input->get('return', '', 'BASE64');
 	
 }
