@@ -14,12 +14,15 @@ jQuery(function($) {
 			
   			wizardFormStateInput.val('1');
 
+			$('.uk-button.published,.uk-button.unpublished').toggleClass('uk-active');
 		});
 		
 		$('.uk-button.unpublished').click(function() {
 			
   			wizardFormStateInput.val('0');
-		
+
+			$('.uk-button.published,.uk-button.unpublished').toggleClass('uk-active');
+
 		});
 		
 		$('.uk-button.trashed').click(function() {
@@ -57,9 +60,7 @@ jQuery(function($) {
 			event.preventDefault();
 			
 			dwShowWaitingModal(JText_COM_DONORWIZ_MODAL_PLEASE_WAIT);
-			
 
-			
 			var formData = $(this).serializeArray();
 			
 
@@ -79,58 +80,35 @@ jQuery(function($) {
 			}
 			
 
-			
-			$.post( wizardForm.attr( 'action' ), formData ,function( response ) {
+			$.post( wizardForm.attr( 'action' ), formData , function( response ) 
+			{
 				
-
 				var response = jQuery.parseJSON( response );
+				var warnings = '';
 				console.log(response);
-				var id = response.data;
-				var success = response.success;
-				var message = response.message;
-				var messages = {};
-				
-				if( response.messages ){
+								
+				if( response.messages && response.messages.warning ){
 					
-					if( response.messages.warning ){
-						
-						messages['warning'] = response.messages.warning;
-						
-						var warnings= '';
-						
-						$.each( messages['warning'], function( i, warning ) {
-  					
-  							warnings+='-'+warning+'<br/>';
-
-						});
-						
-						if(warnings){
-							
-							warnings='<br/>'+warnings;
-						
-						}
-					
-					}
+					$.each( response.messages.warning , function( i, warning ){
+						warnings +='-'+warning+'<br>';
+					});
 				
 				}
 					
-				console.log(response);
-				
-				if(!success){
-
+				if( ! response.success )
+				{
 					waitingModal.hide();
-					$.UIkit.notify( "<i class=uk-icon-warning></i> "+JText_COM_DONORWIZ_WIZARD_SAVE_FAIL+warnings , { timeout:5000} );
+					$.UIkit.notify( "<i class=uk-icon-warning></i> " + JText_COM_DONORWIZ_WIZARD_SAVE_FAIL + '<br>' + warnings , { timeout:5000 } );
 					return false;
 				}
 
 				var wizardReloadPage = getFormdataItemValue( formData , 'wizardReloadPage' );
-				console.log(wizardReloadPage);
-				if( wizardReloadPage == 'current' )
-				{
-					window.location = window.location.href
+
+				if( wizardReloadPage == 'current' ){
+					window.location = window.location.href;
 				}
-				else
-				{
+				else{
+					
 					var wizardReload = getFormdataItemValue( formData , 'reloadDisabled' );
 					
 					if( !wizardReload )
@@ -146,7 +124,8 @@ jQuery(function($) {
 
 			
 				waitingModal.hide();
-				$.UIkit.notify( "<i class=uk-icon-warning></i> " + JText_COM_DONORWIZ_WIZARD_SAVE_FAIL , { timeout:2000} );
+
+				$.UIkit.notify( "<i class=uk-icon-warning></i> " + JText_COM_DONORWIZ_WIZARD_SAVE_FAIL , { timeout:2000 } );
 			
 			});
 		});
@@ -193,10 +172,12 @@ jQuery(function($) {
 		
 		modalHTML += '<div id="dw-modal" class="uk-modal">';
 		modalHTML += '<div class="uk-modal-dialog">';
-		modalHTML += '<div class="uk-text-center"><i class="uk-icon-spinner uk-icon-spin uk-icon-large"></i><h3>'+text+'</h3></div>';
+		modalHTML += '<div class="uk-text-center uk-margin-top"><i class="uk-icon-spinner uk-icon-spin uk-icon-large"></i><h3>'+text+'</h3></div>';
 		modalHTML += '</div>';
 		modalHTML += '</div>';
+		
 		$('body').append( $(modalHTML) );
+		
 		waitingModal = $.UIkit.modal("#dw-modal" , { bgclose : false } ).show();
 		
 	}

@@ -12,8 +12,9 @@ jQuery(function($) {
 
 		var mapCanvas = document.getElementById("map-canvas");
 		
-		var mapObjects = getMapObjects( $.parseJSON( $(mapCanvas).attr("data-map-items") ));
-	
+		//var mapObjects = getMapObjects( $.parseJSON( $(mapCanvas).attr("data-map-items") ));
+		var mapObjects = $.parseJSON( $(mapCanvas).attr("data-map-items") );
+
 		map = new google.maps.Map( mapCanvas , {} );
 		
 		map.setOptions({
@@ -33,8 +34,6 @@ jQuery(function($) {
 	
 		map.fitBounds ( getMapBounds ( mapObjects ) );
 		
-		
-			
 	});
 	
 });
@@ -50,18 +49,21 @@ function setMarkers( map , mapObjects ,oms ) {
 		iw.setContent(marker.html);
 		iw.open(map, marker);
 	});
-				
-	for (var key  in mapObjects) {
-				
+
+
+	for ( key = 0; key <  mapObjects.length; key++ ) 
+	{
 		var location = mapObjects[key];
 		var title = location.title;
 		var address = location.address;
-		
+		var url = location.url;
 		var html = '';
 		
 		html += '<h4>'+title+'</h4>';
 		html += '<p>'+address+'</p>';
-		html += '<a href="'+siteURL+'index.php?option=com_dw_opportunities&view=dwopportunity&lang=el&id='+location.id+'">Διαβάστε περισσότερα</a>';
+		html += '<a href="'+url+'">Διαβάστε περισσότερα</a>';
+		
+		console.log(siteURL+'media/com_donorwiz/images/mapicons/'+location.causearea+'.png');
 
 		var marker = new google.maps.Marker({
 
@@ -82,11 +84,11 @@ function setMarkers( map , mapObjects ,oms ) {
 
 }
 
-function getMapBounds(mapObjects){
+function getMapBounds( mapObjects ){
 	
 	var bounds = new google.maps.LatLngBounds ();
 
-	for (var key  in mapObjects) 
+	for ( key = 0; key <  mapObjects.length; key++ ) 
 	{
 		var location = mapObjects[key];
 		bounds.extend ( new google.maps.LatLng ( parseFloat(location.lat) , parseFloat(location.lng) ) );
@@ -122,7 +124,7 @@ function getMapObjects( mapObjects ){
 		
 	jQuery.each( mapObjects, function( k, v ) 
 	{
-		if( v.category=="COM_VOLUNTEERS_VIRTUAL" || ( v.lat == "" && v.lat == "" ) )
+		if( v.category=="virtual" || ( v.lat == "" && v.lat == "" ) )
 		{
 			delete mapObjects[k];
 		}
