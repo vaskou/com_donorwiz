@@ -15,7 +15,7 @@ if ( JFactory::getApplication()->input->get('mode', '', 'string') == 'register' 
 
 <?php if($isGuest): ?>
 
-<div id="#toggle-login" class="uk-width-1-1 toggle-login-register uk-animation-slide-top<?php if($mode == 'register') echo ' uk-hidden';?>">
+<div id="#toggle-login" class="uk-width-1-1 toggle-login-register uk-animation-fade<?php if($mode == 'register') echo ' uk-hidden';?>">
 
 <h1 class="uk-article-title uk-text-center"><?php echo JText::_('COM_DONORWIZ_LOGIN');?> </h1>
 
@@ -47,7 +47,7 @@ if ( JFactory::getApplication()->input->get('mode', '', 'string') == 'register' 
 	<div class="uk-width-1-1 uk-text-center">
 	
 		<?php echo JText::_('COM_DONORWIZ_NEED_AN_ACCOUNT');?> 
-		<a href="#<?php //echo JRoute::_('index.php?option=com_donorwiz&view=register&Itemid=315',false);?>" data-uk-toggle="{target:'.toggle-login-register'}"><?php echo JText::_('COM_DONORWIZ_REGISTER');?></a>
+		<a href="#" data-uk-toggle="{target:'.toggle-login-register'}"><?php echo JText::_('COM_DONORWIZ_REGISTER');?></a>
 	
 	</div>
 
@@ -56,7 +56,7 @@ if ( JFactory::getApplication()->input->get('mode', '', 'string') == 'register' 
 </div>
 
 
-<div id="#toggle-register" class="uk-width-1-1 toggle-login-register uk-animation-slide-bottom<?php if($mode == 'login') echo ' uk-hidden';?>">
+<div id="#toggle-register" class="uk-width-1-1 toggle-login-register uk-animation-fade<?php if($mode == 'login') echo ' uk-hidden';?>">
 
 <h1 class="uk-article-title uk-text-center"><?php echo JText::_('COM_DONORWIZ_REGISTER');?> </h1>
 
@@ -83,7 +83,7 @@ if ( JFactory::getApplication()->input->get('mode', '', 'string') == 'register' 
     <div class="uk-width-1-1 uk-text-center">
 	
 		<?php echo JText::_('COM_DONORWIZ_LOGIN_ALREADY_HAVE_ACCOUNT'); ?>
-		<a href="#<?php //echo JRoute::_('index.php?option=com_donorwiz&view=login',false);?>" data-uk-toggle="{target:'.toggle-login-register'}"><?php echo JText::_('COM_DONORWIZ_LOGIN'); ?></a></li>
+		<a href="#" data-uk-toggle="{target:'.toggle-login-register'}"><?php echo JText::_('COM_DONORWIZ_LOGIN'); ?></a></li>
 	</div>
 
 </div>
