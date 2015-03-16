@@ -78,7 +78,7 @@ $dispatcher->trigger('onCreateSloginLink', array(&$plugins, $callbackUrl));
         <?php endforeach; ?>
     <?php endif; ?>
 	
-	<div class="uk-text-muted uk-text-center"><?php echo JText::_('COM_DONORWIZ_SOCIAL_LOGIN_PRIVACY'); ?></div>
+	<div class="uk-text-muted uk-text-center uk-text-small"><?php echo JText::_('COM_DONORWIZ_SOCIAL_LOGIN_PRIVACY'); ?></div>
 	
 
 </div>

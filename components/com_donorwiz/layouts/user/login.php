@@ -8,7 +8,7 @@ JFactory::getLanguage()->load('com_donorwiz');
 $isGuest = JFactory::getUser()->get('guest');
 
 $mode = 'login';
-if ( JFactory::getApplication()->input->get('mode', '', 'string') == 'register' )
+if ( JFactory::getApplication()->input->get('mode', '', 'string') == 'register' || isset($displayData['mode'])=='register' )
 	$mode = 'register';
 
 ?>
@@ -17,7 +17,7 @@ if ( JFactory::getApplication()->input->get('mode', '', 'string') == 'register' 
 
 <div id="#toggle-login" class="uk-width-1-1 toggle-login-register uk-animation-fade<?php if($mode == 'register') echo ' uk-hidden';?>">
 
-<h1 class="uk-article-title uk-text-center"><?php echo JText::_('COM_DONORWIZ_LOGIN');?> </h1>
+<h1 class="uk-article-title uk-text-center uk-margin-small-bottom"><?php echo JText::_('COM_DONORWIZ_LOGIN');?> </h1>
 
 <div class="uk-grid">
     
@@ -27,7 +27,7 @@ if ( JFactory::getApplication()->input->get('mode', '', 'string') == 'register' 
 
 	</div>
 	
-	<div class="uk-width-1-1 uk-text-center uk-text-large uk-margin">
+	<div class="uk-width-1-1 uk-text-center uk-text-large uk-margin-small-top uk-margin-small-bottom">
 		<?php echo JText::_('COM_DONORWIZ_LOGIN_OR');?>
 	</div>
 	
@@ -47,7 +47,7 @@ if ( JFactory::getApplication()->input->get('mode', '', 'string') == 'register' 
 	<div class="uk-width-1-1 uk-text-center">
 	
 		<?php echo JText::_('COM_DONORWIZ_NEED_AN_ACCOUNT');?> 
-		<a href="#" data-uk-toggle="{target:'.toggle-login-register'}"><?php echo JText::_('COM_DONORWIZ_REGISTER');?></a>
+		<a class="uk-text-primary" href="#" data-uk-toggle="{target:'.toggle-login-register'}"><?php echo JText::_('COM_DONORWIZ_REGISTER');?></a>
 	
 	</div>
 
@@ -68,7 +68,7 @@ if ( JFactory::getApplication()->input->get('mode', '', 'string') == 'register' 
 		
 	</div>
 	
-	<div class="uk-width-1-1 uk-text-center uk-text-large uk-margin">
+	<div class="uk-width-1-1 uk-text-center uk-text-large uk-margin-small-top uk-margin-small-bottom">
 		<?php echo JText::_('COM_DONORWIZ_LOGIN_OR');?>
 	</div>
 	
@@ -83,7 +83,7 @@ if ( JFactory::getApplication()->input->get('mode', '', 'string') == 'register' 
     <div class="uk-width-1-1 uk-text-center">
 	
 		<?php echo JText::_('COM_DONORWIZ_LOGIN_ALREADY_HAVE_ACCOUNT'); ?>
-		<a href="#" data-uk-toggle="{target:'.toggle-login-register'}"><?php echo JText::_('COM_DONORWIZ_LOGIN'); ?></a></li>
+		<a class="uk-text-primary" href="#" data-uk-toggle="{target:'.toggle-login-register'}"><?php echo JText::_('COM_DONORWIZ_LOGIN'); ?></a></li>
 	</div>
 
 </div>
