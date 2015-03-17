@@ -10,6 +10,9 @@ $isGuest = JFactory::getUser()->get('guest');
 $mode = 'login';
 if ( JFactory::getApplication()->input->get('mode', '', 'string') == 'register' || isset($displayData['mode'])=='register' )
 	$mode = 'register';
+JHtml::_('jquery.framework');
+
+JHtml::_('behavior.formvalidator');
 
 ?>
 

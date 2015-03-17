@@ -66,13 +66,8 @@ $dispatcher->trigger('onCreateSloginLink', array(&$plugins, $callbackUrl));
             }
 			$title = (!empty($link['plugin_title'])) ? ' title="'.$link['plugin_title'].'"' : '';
             ?>
-            <a class="uk-button uk-button-large uk-width-1-1 uk-margin-small <?php echo $link['class'];?>" rel="nofollow" target="_blank" <?php echo $linkParams.$title;?> href="<?php echo JRoute::_($link['link']);?>">
-				<i 
-				class="uk-margin-small-right
-				<?php echo ' uk-icon-'.$link['plugin_name'];?>
-				"
-				>
-				</i>
+            <a class="uk-button uk-button-large uk-width-1-1 uk-margin-small-top <?php echo $link['class'];?>" rel="nofollow" target="_blank" <?php echo $linkParams.$title;?> href="<?php echo JRoute::_($link['link']);?>">
+				<i class="uk-margin-small-right<?php echo ' uk-icon-'.$link['plugin_name'];?>"></i>
 				<?php echo $buttonText.' '.JText::_($link['plugin_title']);?>
 			</a>
         <?php endforeach; ?>

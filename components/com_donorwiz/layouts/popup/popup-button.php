@@ -20,6 +20,9 @@ $isAjax = ( isset ( $displayData['isAjax'] ) ) ? true : null ;
 
 if( $isAjax )
 {
+	
+JHtml::_('jquery.framework');
+JHtml::_('behavior.formvalidator');
 
 $script = array();
 
@@ -41,12 +44,13 @@ $script[] = '					var postdata={';
 $script[] = '						"'.JSession::getFormToken().'":"1",';
 $script[] = '						"layout":"'.$layoutName.'",';
 $script[] = '						"layoutPath":"'.base64_encode ( $layoutPath ).'",';
-$script[] = '						"layoutParams":"'.htmlspecialchars ( json_encode( $layoutParams ) ) .'"';
+$script[] = '						"layoutParams":"'.htmlspecialchars ( json_encode( $layoutParams ) ) .'",';
+$script[] = '						"return":"'.base64_encode ( JFactory::getURI()->toString() ) .'"';
 $script[] = '					};';
 
 $script[] = '					$.ajax({';
 $script[] = '						type: "POST",';
-$script[] = '						url: "index.php?option=com_donorwiz&task=ajax.getLayout&return='.base64_encode ( JFactory::getURI()->toString() ).'",';
+$script[] = '						url: "index.php?option=com_donorwiz&task=ajax.getLayout",';
 $script[] = '						data: postdata';
 $script[] = '					}).done( function(response) {';
 
@@ -54,6 +58,7 @@ $script[] = '						try{';
 $script[] = '							var response = jQuery.parseJSON( response );';
 $script[] = '							$( "#modal-'.$buttonID.'.uk-modal .modal-content .spinner-wrapper" ).toggleClass("uk-hidden");';
 $script[] = '							$( "#modal-'.$buttonID.'.uk-modal .modal-content .layout-wrapper" ).html(response.data);';
+$script[] = '							document.formvalidator = new JFormValidator();';
 $script[] = '							$( "#modal-'.$buttonID.'.uk-modal .modal-content .layout-wrapper" ).toggleClass("uk-hidden");';
 $script[] = '						}';
 $script[] = '						catch(err) {';

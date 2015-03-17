@@ -12,7 +12,8 @@ if( JFactory::getApplication()->input->get('return', '', 'BASE64') ){
 	
 }
 
-JHtml::_('behavior.formvalidation');
+JHtml::_('jquery.framework');
+JHtml::_('behavior.formvalidator');
 
 ?>
 

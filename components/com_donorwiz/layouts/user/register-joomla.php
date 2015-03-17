@@ -14,7 +14,7 @@ if( JFactory::getApplication()->input->get('return', '', 'BASE64') ){
 
 JHtml::_('jquery.framework');
 
-JHtml::_('behavior.formvalidation');
+JHtml::_('behavior.formvalidator');
 
 	
 JHtml::script(Juri::base() . 'media/com_donorwiz/js/registration.js');
