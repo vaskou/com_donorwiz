@@ -93,8 +93,6 @@
 			required="true"
 		/>
 
-
-
 		<field
 			name="captcha"
 			type="captcha"
