@@ -6,9 +6,14 @@ class DonorwizUrl {
 	
 	public function getCurrentUrlWithNewParams( $params )
 	{
+		if( empty ( $params ) )
+		{
+			return JURI::current();
+		}	
+		
 		$uri = JUri::getInstance() ;
 
-		$params = array_merge( $uri->getQuery( true ), $params );
+		$params = array_replace_recursive( $uri->getQuery( true ), $params );
 		
 		$query = $uri->buildQuery( $params );
 				

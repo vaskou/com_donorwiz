@@ -15,9 +15,11 @@ $view =& $controller->getView('dwopportunities', 'html');
 $view->addTemplatePath($component_path.'/views/dwopportunities/tmpl');
 
 // Set which view to display and add appropriate paths
-JRequest::setVar('view', 'dwopportunities');
-JRequest::setVar('responders_id', JFactory::getUser()->id);
-JRequest::setVar('dashboard', 'true');
+$jinput = JFactory::getApplication()->input;
+$jinput->set('view', 'dwopportunities');
+$jinput->set('responders_id', JFactory::getUser()->id );
+$jinput->set('dashboard', 'true');
+
 
 
 JForm::addFormPath($component_path.'/models/forms');

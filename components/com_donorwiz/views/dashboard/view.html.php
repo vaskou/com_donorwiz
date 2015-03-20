@@ -34,8 +34,8 @@ class DonorwizViewDashboard extends JViewLegacy {
 		if ( $this->_layout == 'dwopportunities' )
 		{
 
-			if( !$isBeneficiaryVolunteers )
-				JFactory::getApplication()->redirect(JRoute::_('index.php?option=com_donorwiz&view=dashboard', false));
+			//if( !$isBeneficiaryVolunteers )
+				//JFactory::getApplication()->redirect(JRoute::_('index.php?option=com_donorwiz&view=dashboard', false));
 
 		} 
 		
