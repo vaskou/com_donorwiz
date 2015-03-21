@@ -82,41 +82,48 @@ jQuery(function($) {
 
 			$.post( wizardForm.attr( 'action' ), formData , function( response ) 
 			{
-				
-				var response = jQuery.parseJSON( response );
-				var warnings = '';
-				console.log(response);
-								
-				if( response.messages && response.messages.warning ){
+				try {
+					var response = jQuery.parseJSON( response );
+					var warnings = '';
+					console.log(response);
+									
+					if( response.messages && response.messages.warning ){
+						
+						$.each( response.messages.warning , function( i, warning ){
+							warnings +='-'+warning+'<br>';
+						});
 					
-					$.each( response.messages.warning , function( i, warning ){
-						warnings +='-'+warning+'<br>';
-					});
-				
-				}
-					
-				if( ! response.success )
-				{
-					waitingModal.hide();
-					$.UIkit.notify( "<i class=uk-icon-warning></i> " + JText_COM_DONORWIZ_WIZARD_SAVE_FAIL + '<br>' + warnings , { timeout:5000 } );
-					return false;
-				}
-
-				var wizardReloadPage = getFormdataItemValue( formData , 'wizardReloadPage' );
-
-				if( wizardReloadPage == 'current' ){
-					window.location = window.location.href;
-				}
-				else{
-					
-					var wizardReload = getFormdataItemValue( formData , 'reloadDisabled' );
-					
-					if( !wizardReload )
-					{
-
-						var urlID = ( getFormdataItemValue( formData , 'jform[id]' )=='0' ) ? '&id='+response.data : '' ;
-						window.location = window.location.href+urlID;
 					}
+						
+					if( ! response.success )
+					{
+						waitingModal.hide();
+						$.UIkit.notify( "<i class=uk-icon-warning></i> " + JText_COM_DONORWIZ_WIZARD_SAVE_FAIL + '<br>' + response.message + '<br>' + warnings , { timeout:5000 } );
+						return false;
+					}
+
+					var wizardReloadPage = getFormdataItemValue( formData , 'wizardReloadPage' );
+
+					if( wizardReloadPage == 'current' ){
+						window.location = window.location.href;
+					}
+					else{
+						
+						var wizardReload = getFormdataItemValue( formData , 'reloadDisabled' );
+						
+						if( !wizardReload )
+						{
+
+							var urlID = ( getFormdataItemValue( formData , 'jform[id]' )=='0' ) ? '&id='+response.data : '' ;
+							window.location = window.location.href+urlID;
+						}
+					}
+				}
+				catch( error ){
+					
+					waitingModal.hide();
+					$.UIkit.notify( "<i class=uk-icon-warning></i> " + JText_COM_DONORWIZ_WIZARD_SAVE_FAIL , { timeout:5000 } );
+					return false;					
 				}
 				
 			})
