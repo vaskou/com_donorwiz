@@ -29,6 +29,4 @@ class DonorwizControllerAjax extends DonorwizController {
 		jexit();
     }
 	
-
-
 }

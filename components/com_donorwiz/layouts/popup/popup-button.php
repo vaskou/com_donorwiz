@@ -1,28 +1,32 @@
 <?php
-
 // no direct access
 defined('_JEXEC') or die;
-
 $buttonText = ( isset ( $displayData['buttonText'] ) ) ? $displayData['buttonText'] : '' ;
 $buttonIcon = ( isset ( $displayData['buttonIcon'] ) ) ? $displayData['buttonIcon'] : '' ;
 $buttonType = ( isset ( $displayData['buttonType'] ) ) ? $displayData['buttonType'] : 'uk-button-primary' ;
 $buttonID = ( isset ( $displayData['buttonID'] ) ) ? $displayData['buttonID'] : uniqid() ;
-
 $popupHeader = ( isset ( $displayData['popupParams']['header'] ) ) ? $displayData['popupParams']['header'] : null ;
 $popupFooter = ( isset ( $displayData['popupParams']['footer'] ) ) ? $displayData['popupParams']['footer'] : '' ;
-
 $layoutPath = $displayData['layoutPath'];
 $layoutName = $displayData['layoutName'];
 $layoutParams = $displayData['layoutParams'];
-
 $buttonLink = ( isset ( $displayData['buttonLink'] ) ) ? $displayData['buttonLink'] : '#' ;
 $isAjax = ( isset ( $displayData['isAjax'] ) ) ? true : null ;
+$styles=( isset ( $displayData['styles'] ) ) ? $displayData['styles']  : array() ;
+$scripts=( isset ( $displayData['scripts'] ) ) ? $displayData['scripts'] : array() ;
 
 if( $isAjax )
 {
-	
+
 JHtml::_('jquery.framework');
 JHtml::_('behavior.formvalidator');
+
+foreach($styles as $style){
+	JHtml::stylesheet($style);
+}
+foreach($scripts as $script){
+	JHtml::script($script);
+}
 
 $script = array();
 

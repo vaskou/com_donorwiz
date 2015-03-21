@@ -19,6 +19,19 @@ JHtml::_('behavior.formvalidator');
 	
 JHtml::script(Juri::base() . 'media/com_donorwiz/js/registration.js');
 
+$document = JFactory::getDocument();
+$document->addScriptDeclaration('
+	jQuery(function($){
+		$("#dw-registration-form button").click(function(e){
+			var check_recaptcha=grecaptcha.getResponse();
+			if(!check_recaptcha){
+				e.preventDefault();
+				$.UIkit.notify("'.JText::_('COM_DONOWIZ_REGISTER_RECAPTCHA_ERROR').'",{status:"danger",timeout:2000,pos:"top-center"});
+			}
+		});
+	});
+');
+
 $form = new JForm( 'com_donorwiz.passwordreset' , array( 'control' => 'jform', 'load_data' => true ) );
 $form->loadFile( JPATH_ROOT . '/components/com_donorwiz/models/forms/registration.xml' );
 
@@ -67,7 +80,11 @@ $form->loadFile( JPATH_ROOT . '/components/com_donorwiz/models/forms/registratio
 		</div>
 	</div>	
 
-
+	<div class="uk-form-row">
+        <div class="uk-form-large uk-width-1-1">
+            <?php echo $form->getInput('captcha');?>
+        </div>
+	</div>
 
 
 	
@@ -93,4 +110,3 @@ $form->loadFile( JPATH_ROOT . '/components/com_donorwiz/models/forms/registratio
 
 
 </form>
-
