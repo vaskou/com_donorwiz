@@ -12,7 +12,8 @@ if( JFactory::getApplication()->input->get('return', '', 'BASE64') ){
 	
 }
 
-JHtml::_('behavior.formvalidation');
+JHtml::_('jquery.framework');
+JHtml::_('behavior.formvalidator');
 
 ?>
 
@@ -22,7 +23,7 @@ JHtml::_('behavior.formvalidation');
 		<?php echo JText::_('COM_DONORWIZ_LOGIN_WITH_YOUR_ACCOUNT'); ?>
 	</div>
 
-	<div class="uk-form-row">
+	<div class="uk-form-row uk-margin-small-top">
 		<div class="uk-width-1-1">
 			<div class="uk-form-icon uk-width-1-1">
 				<i class="uk-icon-envelope-o"></i>
@@ -31,7 +32,7 @@ JHtml::_('behavior.formvalidation');
 		</div>
 	</div>	
 
-	<div class="uk-form-row">
+	<div class="uk-form-row uk-margin-small-top">
 		<div class="uk-width-1-1">
 			<div class="uk-form-icon uk-width-1-1">
 				<i class="uk-icon-lock"></i>

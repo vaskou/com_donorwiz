@@ -15,9 +15,9 @@ $view =& $controller->getView('dwdonations', 'html');
 $view->addTemplatePath($component_path.'/views/dwdonations/tmpl');
 
 // Set which view to display and add appropriate paths
-JRequest::setVar('view', 'dwdonations');
-JRequest::setVar('dashboard', 'true');
-
+$jinput = JFactory::getApplication()->input;
+$jinput->set('view', 'dwdonations');
+$jinput->set('dashboard', 'true');
 
 JForm::addFormPath($component_path.'/models/forms');
 JForm::addFieldPath($component_path.'/models/fields');

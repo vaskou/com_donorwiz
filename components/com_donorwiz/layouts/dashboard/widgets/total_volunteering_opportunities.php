@@ -25,7 +25,7 @@
 			</div>
 		</div>
 		<div class="uk-width-1-1 uk-text-right uk-margin-small-top">
-			<a href="<?php echo JRoute::_('index.php?option=com_donorwiz&view=dashboard&layout=volunteers');?>" class="uk-text-contrast">
+			<a href="<?php echo JRoute::_('index.php?option=com_donorwiz&view=dashboard&layout=dwopportunities');?>" class="uk-text-contrast">
 				<?php echo JText::_('COM_DONORWIZ_DASHBOARD_VIEW_ALL');?>
 				<i class="uk-icon-chevron-right uk-margin-small-left"></i>
 			</a>
