@@ -80,7 +80,9 @@ class DonorwizS3 {
 		}
 		
 		$file = JRequest::getVar( 'files', '', 'files', 'array' );
-		
+		//TO DO
+		//$jinput = JFactory::getApplication()->input;
+		//$file = $jinput -> get ( 'files', '',  'array' );
 		
 		//Validate the file
 		$form = new JForm( $objecttype , array( 'control' => 'jform', 'load_data' => false ) );

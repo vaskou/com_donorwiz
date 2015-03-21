@@ -1,5 +1,7 @@
 <?php 
 
+$app = JFactory::getApplication();
+
 $component = 'com_dw_opportunities';
 $component_path = JPATH_ROOT.'/components/'.$component;
 
@@ -15,9 +17,21 @@ $view =& $controller->getView('dwopportunities', 'html');
 $view->addTemplatePath($component_path.'/views/dwopportunities/tmpl');
 
 // Set which view to display and add appropriate paths
-JRequest::setVar('view', 'dwopportunities');
-JRequest::setVar('created_by', JFactory::getUser()->id);
-JRequest::setVar('dashboard', 'true');
+$jinput = JFactory::getApplication()->input;
+$jinput->set('view', 'dwopportunities');
+
+if ( $app -> getUserState ('com_donorwiz.dashboard.isBeneficiary.opportunities') ){
+
+	$jinputFilterBefore = ( is_array( $jinput->get('filter','','array') ) ) ?  $jinput->get('filter','','array')  : array() ;
+	$jinput->set('filter', array_replace_recursive( $jinputFilterBefore , array ( 'created_by' =>  JFactory::getUser()->id) )   );
+
+}
+
+if ( !$app -> getUserState ('com_donorwiz.dashboard.isBeneficiary.opportunities') ){
+	$jinput->set( 'filter' , array ( 'responders_id' => JFactory::getUser()->id ) );
+}
+
+$jinput->set('dashboard', 'true');
 
 
 JForm::addFormPath($component_path.'/models/forms');

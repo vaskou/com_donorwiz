@@ -58,4 +58,5 @@ $isGuest = JFactory::getUser()->get('guest');
 </div>
 <?php endif;?>
 
+<?php echo JLayoutHelper::render( 'footer', array () , JPATH_ROOT .'/components/com_donorwiz/layouts/dashboard' , null ); ?>
 

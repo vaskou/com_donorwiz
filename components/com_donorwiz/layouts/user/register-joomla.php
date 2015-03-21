@@ -14,7 +14,7 @@ if( JFactory::getApplication()->input->get('return', '', 'BASE64') ){
 
 JHtml::_('jquery.framework');
 
-JHtml::_('behavior.formvalidation');
+JHtml::_('behavior.formvalidator');
 
 	
 JHtml::script(Juri::base() . 'media/com_donorwiz/js/registration.js');
@@ -44,7 +44,7 @@ $form->loadFile( JPATH_ROOT . '/components/com_donorwiz/models/forms/registratio
 	</div>
 	
 	
-	<div class="uk-form-row">
+	<div class="uk-form-row uk-margin-small-top">
 		<div class="uk-width-1-1">
 			<div class="uk-form-icon uk-width-1-1">
 				<i class="uk-icon-user"></i>
@@ -53,7 +53,7 @@ $form->loadFile( JPATH_ROOT . '/components/com_donorwiz/models/forms/registratio
 		</div>
 	</div>
 		
-	<div class="uk-form-row">
+	<div class="uk-form-row uk-margin-small-top">
 		<div class="uk-width-1-1">
 			<div class="uk-form-icon uk-width-1-1">
 				<i class="uk-icon-user"></i>
@@ -62,7 +62,7 @@ $form->loadFile( JPATH_ROOT . '/components/com_donorwiz/models/forms/registratio
 		</div>
 	</div>
 
-	<div class="uk-form-row">
+	<div class="uk-form-row uk-margin-small-top">
 		<div class="uk-width-1-1">
 			<div class="uk-form-icon uk-width-1-1">
 				<i class="uk-icon-envelope-o"></i>
@@ -71,7 +71,7 @@ $form->loadFile( JPATH_ROOT . '/components/com_donorwiz/models/forms/registratio
 		</div>
 	</div>
 	
-	<div class="uk-form-row">
+	<div class="uk-form-row uk-margin-small-top">
 		<div class="uk-width-1-1">
 			<div class="uk-form-icon uk-width-1-1">
 				<i class="uk-icon-lock"></i>

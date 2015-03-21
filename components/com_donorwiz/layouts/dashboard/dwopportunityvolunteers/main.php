@@ -16,11 +16,12 @@ $view->addTemplatePath($component_path.'/views/dwopportunity/tmpl');
 $view->setLayout('volunteers');
 
 // Set which view to display and add appropriate paths
-JRequest::setVar('view', 'dwopportunity');
+$jinput = JFactory::getApplication()->input;
+$jinput->set('view', 'dwopportunity');
+$jinput->set('id', JFactory::getApplication()->input->get('id', '', 'int'));
+$jinput->set('dashboard', 'true');
 
-JRequest::setVar('id', JFactory::getApplication()->input->get('id', '', 'int'));
 
-JRequest::setVar('dashboard', 'true');
 
 JForm::addFormPath($component_path.'/models/forms');
 JForm::addFieldPath($component_path.'/models/fields');

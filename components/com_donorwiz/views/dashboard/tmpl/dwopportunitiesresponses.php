@@ -20,8 +20,11 @@ $isGuest = $user->get('guest');
 				
 				<?php echo JLayoutHelper::render( 
 					'main', 
-					array (), 
-					JPATH_ROOT .'/components/com_donorwiz/layouts/dashboard/volunteers_responses', 
+					array ( 
+						'opportunities' => $this -> opportunities, 
+						'pagination' => $this -> pagination, 
+					), 
+					JPATH_ROOT .'/components/com_donorwiz/layouts/dashboard/dwopportunitiesresponses', 
 					null 
 				); ?>
 			

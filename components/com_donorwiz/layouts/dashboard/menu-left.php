@@ -14,7 +14,7 @@ $app = JFactory::getApplication();
 		$name = $user->getDisplayName();
 	?>
 	<div class="uk-width-1-1 uk-text-center">
-		<img class="uk-thumbnail" src="<?php echo $avatarUrl;?>" alt="<?php echo $name;?>">
+		<img class="uk-thumbnail uk-border-circle" src="<?php echo $avatarUrl;?>" alt="<?php echo $name;?>">
 	</div>
 	
 	<div class="uk-width-1-1 uk-margin-small-top">
@@ -51,14 +51,21 @@ $app = JFactory::getApplication();
 		
 		<?php if ( $app -> getUserState ('com_donorwiz.dashboard.isBeneficiary.opportunities') ) : ?>
 		
-		<li <?php if ( $layout == 'volunteering_opportunities' ) echo 'class="uk-active"';?>>
+		<li <?php if ( $layout == 'dwopportunities' ) echo 'class="uk-active"';?>>
 			<a href="<?php echo JRoute::_('index.php?option=com_donorwiz&view=dashboard&layout=dwopportunities');?>">
 				<i class="uk-icon-th-list"></i>
 				<?php echo JText::_('COM_DONORWIZ_DASHBOARD_MY_VOLUNTEERING_OPPORTUNITIES');?>
 			</a>
 		</li>
 
-		<li <?php if ( $layout == 'volunteers_add_opportunity' ) echo 'class="uk-active"';?>>
+		<li <?php if ( $layout == 'dwopportunitiesresponses' ) echo 'class="uk-active"';?>>
+			<a href="<?php echo JRoute::_('index.php?option=com_donorwiz&view=dashboard&layout=dwopportunitiesresponses');?>">
+				<i class="uk-icon-users"></i>
+				<?php echo JText::_('COM_DONORWIZ_DASHBOARD_MY_VOLUNTEERS');?>
+			</a>
+		</li>
+		
+		<li <?php if ( $layout == 'dwopportunityform' ) echo 'class="uk-active"';?>>
 			<a href="<?php echo JRoute::_('index.php?option=com_donorwiz&view=dashboard&layout=dwopportunityform');?>">
 				<i class="uk-icon-plus"></i>
 				<?php echo JText::_('COM_DONORWIZ_DASHBOARD_VOLUNTEERS_ADD');?>
@@ -70,10 +77,10 @@ $app = JFactory::getApplication();
 		
 		<?php if ( !$app -> getUserState ('com_donorwiz.dashboard.isBeneficiary.opportunities') ) : ?>
 		
-		<li <?php if ( $layout == 'volunteers_resposnes' ) echo 'class="uk-active"';?>>
-			<a href="<?php echo JRoute::_('index.php?option=com_donorwiz&view=dashboard&layout=volunteers_responses');?>">
-				<?php echo JText::_('COM_DONORWIZ_DASHBOARD_MY_VOLUNTEERS_RESPONSES');?>
-				
+		<li <?php if ( $layout == 'dwopportunitiesresponses' ) echo 'class="uk-active"';?>>
+			<a href="<?php echo JRoute::_('index.php?option=com_donorwiz&view=dashboard&layout=dwopportunitiesresponses');?>">
+				<i class="uk-icon-users"></i>
+				<?php echo JText::_('COM_DONORWIZ_DASHBOARD_MY_VOLUNTEERING_OPPORTUNITIES');?>
 			</a>
 		</li>
 		
