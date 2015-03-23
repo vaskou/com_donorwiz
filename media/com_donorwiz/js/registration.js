@@ -1,5 +1,7 @@
-jQuery(function($) {
-	
+//jQuery(function($) {
+
+function fn_registration_form_init(errorText)
+{
 	var $ = jQuery.noConflict();
 	
 	$('#jform_email1').on('input',function() {
@@ -42,4 +44,13 @@ jQuery(function($) {
 		return event.keyCode != 13;
 	});
 	
-});
+	$("#dw-registration-form button").click(function(e){
+		var check_recaptcha=grecaptcha.getResponse();
+		if(!check_recaptcha){
+			e.preventDefault();
+			$.UIkit.notify(errorText,{status:"danger",timeout:2000,pos:"top-center"});
+		}
+	});
+
+}
+//});

@@ -14,6 +14,7 @@ JHtml::_('jquery.framework');
 
 JHtml::_('behavior.formvalidator');
 
+$isPopup=( isset ( $displayData['isPopup'] ) ) ? $displayData['isPopup']  : false ;
 ?>
 
 <?php if($isGuest): ?>
@@ -76,7 +77,7 @@ JHtml::_('behavior.formvalidator');
 	</div>
 	
     <div class="uk-width-1-1">
-		<?php echo JLayoutHelper::render( 'register-joomla', array () , JPATH_ROOT .'/components/com_donorwiz/layouts/user' , null ); ?>
+		<?php echo JLayoutHelper::render( 'register-joomla', array ('isPopup'=>$isPopup) , JPATH_ROOT .'/components/com_donorwiz/layouts/user' , null ); ?>
 	</div>
 	
 
