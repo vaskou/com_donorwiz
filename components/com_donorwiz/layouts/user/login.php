@@ -37,7 +37,7 @@ $isPopup=( isset ( $displayData['isPopup'] ) ) ? $displayData['isPopup']  : fals
 	
 	<div class="uk-width-1-1">
 		
-		<?php echo JLayoutHelper::render( 'login-joomla', array () , JPATH_ROOT .'/components/com_donorwiz/layouts/user' , null ); ?>
+		<?php echo JLayoutHelper::render( 'login-joomla', array ('isPopup'=>$isPopup) , JPATH_ROOT .'/components/com_donorwiz/layouts/user' , null ); ?>
 	
 	</div>
 	
