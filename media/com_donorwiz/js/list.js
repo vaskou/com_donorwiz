@@ -9,7 +9,7 @@ jQuery(function($) {
 			//valueNames: [ "name" ]
 		};
 		
-		var responsesList = new List("opportunity_responses", options );
+		var responsesList = new List("opportunity_responses_list", options );
 		
 		jQuery( ".status-filter" ).change(function() {
 			

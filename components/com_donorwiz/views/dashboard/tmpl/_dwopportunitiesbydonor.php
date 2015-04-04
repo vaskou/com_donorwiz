@@ -3,12 +3,7 @@
 // no direct access
 defined('_JEXEC') or die;
 
-$user = JFactory::getUser();
-$isGuest = $user->get('guest');
-
 ?>
-
-<?php if(!$isGuest) :?>
 
 <div class="uk-grid uk-margin-top" data-uk-grid-margin="">
 
@@ -19,12 +14,12 @@ $isGuest = $user->get('guest');
 			<div class="uk-width-1-1">
 				
 				<?php echo JLayoutHelper::render( 
-					'main', 
+					'dwopportunitiesbydonor', 
 					array ( 
 						'opportunities' => $this -> opportunities, 
 						'pagination' => $this -> pagination, 
 					), 
-					JPATH_ROOT .'/components/com_donorwiz/layouts/dashboard/dwopportunity', 
+					JPATH_ROOT .'/components/com_donorwiz/layouts/dashboard/layouts', 
 					null 
 				); ?>
 			
@@ -39,6 +34,3 @@ $isGuest = $user->get('guest');
 	</div>
 	
 </div>
-<?php endif;?>
-
-

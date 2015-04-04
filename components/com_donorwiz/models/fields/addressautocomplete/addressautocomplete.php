@@ -27,7 +27,7 @@ class JFormFieldAddressautocomplete extends JFormField
 	{
 
 		JHtml::_('jquery.framework');
-		
+		JFactory::getLanguage()->load('com_donorwiz');
 		//Load the Google Maps JS API Library
 		$DonorwizGooglemaps = new DonorwizGooglemaps();
 		$DonorwizGooglemaps ->loadGoogleMapsApi();
@@ -37,55 +37,46 @@ class JFormFieldAddressautocomplete extends JFormField
 		
 		$html = array();
 		
-		$jinput = JFactory::getApplication()->input;
-	
-		$jinputGET = $jinput->getArray($_GET);
-									
-		foreach ( $jinputGET as $key => $value) {
+		$app = JFactory::getApplication();
+
+		$jinput = $app -> input;
+		$jinputFilter = $app->input->get('filter','','array');
 		
-			$html[] = '<input type="hidden" name="'.$key.'" id="nearby_'.$key.'" value="'.$value.'" >';
-			
+		if( is_array ( $jinput->get('filter','','array') ) )
+		{
+			foreach ( $jinput->get('filter','','array')  as $key => $value) 
+			{
+				$html[] = '<input type="hidden" name="filter['.$key.']" id="nearby_'.$key.'" value="'.$value.'" >';
+			}
 		}
 		
-		if( !isset($jinputGET['lat']) )
+		
+
+		if ( !isset ($jinputFilter['lat']) )
 		{
-			$html[] = '<input type="hidden" name="lat" id="nearby_lat" value="0" >';
+			$html[] = '<input type="hidden" name="filter[lat]" id="nearby_lat" value="'.$jinput->get('lat','0','string').'" >';	
 		}
 
-		if( !isset($jinputGET['lng']) )
+		if ( !isset ($jinputFilter['lng']) )
 		{
-			$html[] = '<input type="hidden" name="lng" id="nearby_lng" value="0" >';
-		}			
-	
-		if( !isset($jinputGET['nearby_place']) || $jinputGET['nearby_place']=='' )
+			$html[] = '<input type="hidden" name="filter[lng]" id="nearby_lng" value="'.$jinput->get('lng','0','string').'" >';	
+		}
+
+		if( !$jinput->get('nearby_place','','string')  || $jinput->get('nearby_place','','string')=='' )
 		{
-			$html[] ='<input class="uk-form-large uk-width-1-1" id="autocomplete" onFocus="geolocate()" type="text" name="nearby_place" value="">';
+			$html[] ='<input class="uk-form-large uk-width-1-1" id="autocomplete" onFocus="geolocate()" type="text" name="nearby_place" value="" placeholder="'.JText::_('COM_DONORWIZ_TYPE_LOCATION_AND_SELECT').'">';
 		}
 		else
 		{	
-			$html[] ='<input class="uk-form-large uk-width-1-1" id="autocomplete" onFocus="geolocate()" type="text" name="nearby_place" value="'.$jinputGET['nearby_place'].'">';
+			$html[] ='<input class="uk-form-large uk-width-1-1" id="autocomplete" onFocus="geolocate()" type="text" name="nearby_place" value="'.$jinput->get('nearby_place','','string').'" placeholder="'.JText::_('COM_DONORWIZ_TYPE_LOCATION_AND_SELECT').'">';
 		}
 	
-		return implode($html);
-		
 
-		$script[] = '			var $ = jQuery.noConflict();';
-		$script[] = '			$(document).ready(function () {';
-		$script[] = '				$("#'.$this->getAttribute("id").'").locationpicker({';
-		$script[] = '					location: {latitude: $("#'.$this->getAttribute("latname").'_elm").val() , longitude: $("#'.$this->getAttribute("lngname").'_elm").val()},';
-		$script[] = '					radius: '.$this->getAttribute("radius").',';
-		$script[] = '					enableAutocomplete: true,';
-		$script[] = '					inputBinding: {';
-		$script[] = '						latitudeInput: $("#'.$this->getAttribute("latname").'_elm"),';
-		$script[] = '						longitudeInput: $("#'.$this->getAttribute("lngname").'_elm"),';
-		$script[] = '						radiusInput: $("#'.$this->getAttribute("radiusname").'_elm"),';
-		$script[] = '						locationNameInput: $("#'.$this->getAttribute("name").'_elm")';
-		$script[] = '					}';
-		$script[] = '				});';
-		$script[] = '			});';
-		$script[] = '		});';
+		$script[] = 'var JText_COM_DONORWIZ_TYPE_LOCATION_AND_SELECT = "'.JText::_('COM_DONORWIZ_TYPE_LOCATION_AND_SELECT').'"';
 		
 		JFactory::getDocument()->addScriptDeclaration(implode("\n", $script));
+		
+		return implode($html);
 
 	}
 }
