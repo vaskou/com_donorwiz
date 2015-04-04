@@ -15,25 +15,17 @@ if( JFactory::getApplication()->input->get('return', '', 'BASE64') ){
 JHtml::_('jquery.framework');
 
 JHtml::_('behavior.formvalidator');
-
 	
 JHtml::script(Juri::base() . 'media/com_donorwiz/js/registration.js');
 
-$document = JFactory::getDocument();
-$document->addScriptDeclaration('
-	jQuery(function($){
-		$("#dw-registration-form button").click(function(e){
-			var check_recaptcha=grecaptcha.getResponse();
-			if(!check_recaptcha){
-				e.preventDefault();
-				$.UIkit.notify("'.JText::_('COM_DONOWIZ_REGISTER_RECAPTCHA_ERROR').'",{status:"danger",timeout:2000,pos:"top-center"});
-			}
-		});
-	});
-');
+$isPopup=( isset ( $displayData['isPopup'] ) ) ? $displayData['isPopup']  : false ;
 
 $form = new JForm( 'com_donorwiz.passwordreset' , array( 'control' => 'jform', 'load_data' => true ) );
 $form->loadFile( JPATH_ROOT . '/components/com_donorwiz/models/forms/registration.xml' );
+
+if($isPopup){
+	fn_load_captcha($form);
+}
 
 ?>
 
@@ -110,3 +102,31 @@ $form->loadFile( JPATH_ROOT . '/components/com_donorwiz/models/forms/registratio
 
 
 </form>
+
+<script type="text/javascript">
+jQuery(function(){
+	fn_registration_form_init('<?php echo JText::_('COM_DONOWIZ_REGISTER_RECAPTCHA_ERROR')?>');
+});
+</script>
+
+<?php
+function fn_load_captcha($form){
+	$document = JFactory::getDocument();
+	$app = JFactory::getApplication();
+	
+	$plugin = JPluginHelper::getPlugin('captcha', 'recaptcha');
+
+	$params = new JRegistry($plugin->params);
+	$pubkey= $params->get('public_key','');
+	$theme = $params->get('theme2', 'light');
+	$id=$form->getField('captcha')->id;
+	
+	
+	$file = $app->isSSLConnection() ? 'https' : 'http';
+	$file .= '://www.google.com/recaptcha/api.js?hl=' . JFactory::getLanguage()->getTag() . '&onload=onloadCallback&render=explicit';
+	
+	$line='var onloadCallback = function() {grecaptcha.render("' . $id . '", {sitekey: "' . $pubkey . '", theme: "' . $theme . '"});}';
+	echo '<script src="'.$file.'"></script>';
+	echo '<script>'.$line.'</script>';
+}
+?>

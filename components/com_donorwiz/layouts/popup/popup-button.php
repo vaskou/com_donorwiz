@@ -83,7 +83,8 @@ $script[] = '					});';
 $script[] = '				}';
 $script[] = '			},';
 $script[] = '			"hide.uk.modal": function(){';
-
+$script[] = '				$( "#modal-'.$buttonID.'.uk-modal .modal-content .layout-wrapper" ).html("");';
+$script[] = '				$( "#modal-'.$buttonID.'.uk-modal .modal-content > div" ).toggleClass("uk-hidden");';
 $script[] = '			 }';
 
 $script[] = '		});';
