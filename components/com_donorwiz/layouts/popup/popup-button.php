@@ -1,7 +1,9 @@
 <?php
 // no direct access
 defined('_JEXEC') or die;
+$modalSize = ( isset ( $displayData['modalSize'] ) ) ? $displayData['modalSize'] : '' ;
 $buttonText = ( isset ( $displayData['buttonText'] ) ) ? $displayData['buttonText'] : '' ;
+$buttonTooltip = ( isset ( $displayData['buttonTooltip'] ) ) ? $displayData['buttonTooltip'] : '' ;
 $buttonIcon = ( isset ( $displayData['buttonIcon'] ) ) ? $displayData['buttonIcon'] : '' ;
 $buttonType = ( isset ( $displayData['buttonType'] ) ) ? $displayData['buttonType'] : 'uk-button-primary' ;
 $buttonID = ( isset ( $displayData['buttonID'] ) ) ? $displayData['buttonID'] : uniqid() ;
@@ -96,11 +98,20 @@ JFactory::getDocument()->addScriptDeclaration(implode("\n", $script));
 
 ?>
 
-<a href="<?php echo $buttonLink;?>" class="<?php echo $buttonType;?>" data-uk-modal="{target:'#modal-<?php echo $buttonID;?>'}" ><i class="<?php echo $buttonIcon;?>"></i><?php echo $buttonText;?></a>
+<a href="<?php echo $buttonLink;?>" class="<?php echo $buttonType;?>" data-uk-modal="{target:'#modal-<?php echo $buttonID;?>'}" 
+
+	<?php if ( $buttonTooltip ) : ?>
+	title="<?php echo $buttonTooltip;?>"
+	data-uk-tooltip
+	<?php endif; ?>
+
+>
+
+<i class="<?php echo $buttonIcon;?>"></i><?php echo $buttonText;?></a>
 
 <div id="modal-<?php echo $buttonID;?>" class="uk-modal" style="display:none;">
 
-	<div class="uk-modal-dialog">
+	<div class="uk-modal-dialog <?php echo $modalSize;?>">
 		
 		<a class="uk-modal-close uk-close"></a>
 		

@@ -2,7 +2,7 @@
 <metadata>
     <layout title="COM_DONORWIZ_VIEW_DASHBOARD" option="View">
         <message>
-                        <![CDATA[COM_DONORWIZ_VIEW_DASHBOARD]]>
+			<![CDATA[COM_DONORWIZ_VIEW_DASHBOARD]]>
         </message>
     </layout>
 </metadata>
