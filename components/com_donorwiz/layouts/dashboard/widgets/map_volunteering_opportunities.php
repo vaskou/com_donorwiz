@@ -18,8 +18,7 @@
 	$script = array();
 	$script[] = 'var siteURL = "' .Juri::base().'";';
 	JFactory::getDocument()->addScriptDeclaration(implode("\n", $script));
-	JHtml::script( Juri::base() . 'modules/mod_donorwizmap/assets/js/oms.min.js');
-	JHtml::script( Juri::base() . 'modules/mod_donorwizmap/assets/js/script.js');
+
 
 ?>
 
@@ -27,6 +26,6 @@
 	id="map-canvas"
 	style="height:400px;"
 	class=""
-	data-volunteering-opportunities-items="<?php echo htmlspecialchars(json_encode($items));?>"
+	data-map-items="<?php echo htmlspecialchars(json_encode($items));?>"
 >
 </div>

@@ -22,37 +22,14 @@ class DonorwizViewDashboard extends JViewLegacy {
      */
     public function display($tpl = null) {
 		
-		
-		$app = JFactory::getApplication();
-		
-		$donorwizUser = new DonorwizUser( JFactory::getUser() -> id );
-		
-		$isBeneficiaryVolunteers = $donorwizUser -> isBeneficiary('com_dw_opportunities');
-		
-		$app -> setUserState ('com_donorwiz.dashboard.isBeneficiary.opportunities', $isBeneficiaryVolunteers);
-		
-		if ( $this->_layout == 'dwopportunities' )
+		//Check if user is logged in or ULR is missing Itemid
+		$isGuest = JFactory::getUser()->get('guest');
+		if( ( $isGuest && $this->_layout != 'default') || JFactory::getApplication()->input -> get ('Itemid','','int') == '' )
 		{
-
-			//if( !$isBeneficiaryVolunteers )
-				//JFactory::getApplication()->redirect(JRoute::_('index.php?option=com_donorwiz&view=dashboard', false));
-
-		} 
-		
-		if ( $this->_layout == 'volunteerins' )
-		{
-			
-		if( !$isBeneficiaryVolunteers )
-				JFactory::getApplication()->redirect(JRoute::_('index.php?option=com_donorwiz&view=dashboard', false));
-
+			JFactory::getApplication()->redirect( JURI::base().JRoute::_( 'dashboard/home' , false ) );
+			jexit();
 		}
-		
-		if ( $this->_layout == 'volunteers_responses' )
-		{
 
-	
-		} 
-		
 		if ( $this->_layout == 'dwopportunityform' )
 		{
 			JFactory::getLanguage()->load('com_dw_opportunities');
@@ -63,7 +40,6 @@ class DonorwizViewDashboard extends JViewLegacy {
 			$this -> item = $formData['item'];
 		}
 
-		
         $this->_prepareDocument();
 
         parent::display($tpl);

@@ -5,10 +5,16 @@ jQuery(function($) {
 	var $ = jQuery.noConflict();
 	
 	$( window ).resize(function() {
+		if( !window.google )
+			return;
+		
 		google.maps.event.trigger(map,'resize');
 	});
 	
 	$(document).ready(function () {
+		
+		if( !window.google )
+			return;
 
 		var mapCanvas = document.getElementById("map-canvas");
 		

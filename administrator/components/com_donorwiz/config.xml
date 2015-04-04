@@ -4,8 +4,30 @@
 	<fieldset 
 		label="COM_DONORWIZ" 
 		name="donorwiz">
+              <field name="beneficiary_usergroups" type="usergroup"
+                
+            label="COM_DW_DONATIONS_FORM_LBL_BENEFICIARY_USERGROUPS"
+            description="COM_DW_DONATIONS_FORM_DESC_BENEFICIARY_USERGROUPS" 
+                
+                
+                
+            menu_published="0"
+            filter="raw"
+            multiple="true" />   
 
-    </fieldset>
+              <field name="donor_usergroups" type="usergroup"
+                
+            label="COM_DW_DONATIONS_FORM_LBL_DONOR_USERGROUPS"
+            description="COM_DW_DONATIONS_FORM_DESC_DONOR_USERGROUPS" 
+                
+                
+                
+            menu_published="0"
+            filter="raw"
+            multiple="true" /> 
+			
+			
+			</fieldset>
  	
 	<fieldset 
 		label="GOOGLE MAPS" 

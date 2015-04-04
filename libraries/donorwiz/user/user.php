@@ -39,6 +39,37 @@ class DonorwizUser extends CUser {
 		return $isBeneficiary;
 	
 	}
+
+	public function isDonor()
+	{
+		$com_params = JComponentHelper::getParams('com_donorwiz');
+		
+		$donor_usergroups = $com_params->get('donor_usergroups');
+		
+		$table   = JUser::getTable();
+		
+		if(!$table->load( $this -> id ))
+		{
+			return false;	
+		}
+
+		$user = JFactory::getUser( $this -> id );
+		
+		$user_usergroups = $user -> get('groups');
+		
+		$isDonor = false; 
+		
+		foreach ($user_usergroups as $key => $value) {
+			
+			if( in_array ( $value , $donor_usergroups ))
+			{
+				$isDonor = true;
+			}
+		}
+		
+		return $isDonor;
+	
+	}
 	
 	public function getCoordinates($address)
 	{

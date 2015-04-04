@@ -4,13 +4,10 @@
 defined('_JEXEC') or die;
 
 echo JLayoutHelper::render( 
-	'dashboard.layouts.dwopportunities', 
-	array ( 
-		'opportunities' => $this -> opportunities, 
-		'pagination' => $this -> pagination, 
-	), 
+	'dashboard.layouts.dwdonations', 
+	array (), 
 	JPATH_ROOT .'/components/com_donorwiz/layouts', 
 	null 
-);
+); 
 				
 ?>
