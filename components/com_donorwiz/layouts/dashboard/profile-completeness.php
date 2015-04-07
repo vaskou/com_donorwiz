@@ -74,4 +74,5 @@ $progress = intval ( ( $progressCurrent / $progressTotal ) * 100 );
 		</a>
 	</div>
 </div>
+<hr>
 <?php endif;?>
