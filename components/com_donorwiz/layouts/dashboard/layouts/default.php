@@ -9,7 +9,7 @@ $isGuest = JFactory::getUser()->get('guest');
 
 <?php if(!$isGuest) :?>
 
-<div class="uk-grid uk-margin-top" data-uk-grid-margin="">
+<div class="uk-grid" data-uk-grid-margin="">
 	
 	<div class="uk-width-1-1 uk-width-medium-3-4">
 		
@@ -31,10 +31,6 @@ $isGuest = JFactory::getUser()->get('guest');
 	
 	</div>
 	
-</div>
-
-<div class="uk-width-1-1">
-	<?php echo JLayoutHelper::render( 'dashboard.footer', array () , JPATH_ROOT .'/components/com_donorwiz/layouts' , null ); ?>
 </div>	
 
 <?php endif;?>

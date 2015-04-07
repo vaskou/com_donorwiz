@@ -21,11 +21,12 @@
 
 
 ?>
-
-<div 
-	id="map-canvas"
-	style="height:400px;"
-	class=""
-	data-map-items="<?php echo htmlspecialchars(json_encode($items));?>"
->
+<div class="uk-panel uk-panel-widget uk-panel-box uk-panel-blank">
+	<div 
+		id="map-canvas"
+		style="height:400px;"
+		class=""
+		data-map-items="<?php echo htmlspecialchars(json_encode($items));?>"
+	>
+	</div>
 </div>
