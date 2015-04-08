@@ -33,6 +33,8 @@ class JFormFieldUikitfilterdatepicker extends JFormField
 		$jinput = JFactory::getApplication()->input;
 		$input_filters=$jinput->get('filter','','ARRAY');
 		
+		$name=$this->getAttribute("name");
+		
 		$value = (isset($input_filters[$this->getAttribute("filter")]))?$input_filters[$this->getAttribute("filter")]:'';
 		
 		$date = JFactory::getDate($value);
@@ -40,11 +42,11 @@ class JFormFieldUikitfilterdatepicker extends JFormField
 		$date_value  = ( $value == '0000-00-00' || $value == '' ) ? '' : $date -> format('Y-m-d') ;
 		$date_pretty = ( $value == '0000-00-00' || $value == '' ) ? '' : $date -> format('d-m-Y') ;
 		
-		$html[] = '<input type="hidden" id="datepicker_'.$this->getAttribute("name").'" value="'.$date_value.'" name="filter['.$this->getAttribute("filter").']">';
+		$html[] = '<input type="hidden" id="datepicker_'.$name.'" value="'.$date_value.'" name="filter['.$this->getAttribute("filter").']">';
 		
 		$html[] = '<div class="uk-form-icon">';
-		$html[] = '<i class="uk-icon-calendar"></i>';
-		$html[] = '<input type="text" id="datepicker_pretty_'.$this->getAttribute("name").'" value="'.$date_pretty.'"  class="uk-form-large" data-uk-datepicker>';
+		$html[] = '	<i class="uk-icon-calendar"></i>';
+		$html[] = '	<input type="text" id="datepicker_pretty_'.$name.'" value="'.$date_pretty.'"  class="uk-form-large" data-uk-datepicker>';
 		$html[] = '</div>';
 	
 		// Build the script.
@@ -54,7 +56,7 @@ class JFormFieldUikitfilterdatepicker extends JFormField
 		
 		$script[] = '		var $ = jQuery.noConflict();';
 		
-		$script[] = '		var dateinput = $("#datepicker_'.$this->getAttribute("name").'");';
+		$script[] = '		var dateinput = $("#datepicker_'.$name.'");';
 		$script[] = '		var dateinput_pretty = $("#datepicker_pretty_'.$this->getAttribute("name").'");';
 		
 		
