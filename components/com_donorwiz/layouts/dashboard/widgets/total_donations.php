@@ -2,17 +2,10 @@
 
 $userID = JFactory::getUser() -> id;
 
-$component = 'com_dw_donations';
-$component_path = JPATH_ROOT.'/components/'.$component;
-
 if (!class_exists('Dw_donationsController')) 
-	require($component_path.'/controller.php');
+	require_once(JPATH_ROOT.'/components/com_dw_donations/controller.php');
 
 $moneydonationslist = new DwDonationsHelper();
-
-$donorwizUser = new DonorwizUser ($userID) ;
-$isBeneficiaryDonations = $donorwizUser-> isBeneficiary('com_dw_donations');
-$isDonor = $donorwizUser -> isDonor();
 
 $date=JFactory::getDate('now')->format('Y-m');
 
@@ -20,14 +13,8 @@ $filter_array=array(
 	'modified_from_dateformat'=>$date.'-01',
 	'state'=>1
 );
-if($isBeneficiaryDonations){
-	$filter_array['beneficiary_id']=$userID;
-}elseif($isDonor){
-	$filter_array['donor_id']=$userID;
-}else{
-	$filter_array=array();
-}
-$total=$moneydonationslist->fn_get_donations_sum_by_user_id($filter_array);
+
+$total=$moneydonationslist->fn_get_donations_sum_by_user_id($filter_array,$userID);
 
 ?>
 
