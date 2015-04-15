@@ -35,14 +35,14 @@ $total = $moneydonationslist -> fn_get_donations_sum_by_user_id( $userID , $isBe
 			<div class="uk-width-1-1 uk-text-right uk-text-extra-large">
 			<?php echo $total;?>
 			</div>
-			<div class="uk-width-1-1 uk-text-right uk-text-large">
+			<div class="uk-width-1-1 uk-text-right uk-text-large uk-text-truncate">
 			<?php echo JText::_('COM_DONORWIZ_DASHBOARD_DONATIONS_TOTAL_THIS_MONTH');?>
 			</div>
 		
 		</div>
 		
 		<div class="uk-width-1-1 uk-text-right uk-margin-small-top">
-			<a href="<?php echo JRoute::_('index.php?option=com_donorwiz&view=dashboard&layout=donations');?>" class="uk-text-contrast">
+			<a href="<?php echo JRoute::_('index.php?Itemid='. JFactory::getApplication()->getMenu()->getItems( 'link', 'index.php?option=com_donorwiz&view=dashboard&layout=dwdonations', true )->id );?>" class="uk-text-contrast uk-text-truncate">
 				<?php echo JText::_('COM_DONORWIZ_DASHBOARD_VIEW_ALL');?>
 				<i class="uk-icon-chevron-right uk-margin-small-left"></i>
 			</a>
