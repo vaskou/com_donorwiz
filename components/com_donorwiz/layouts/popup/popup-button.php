@@ -117,7 +117,7 @@ JFactory::getDocument()->addScriptDeclaration(implode("\n", $script));
 		<a class="uk-modal-close uk-close"></a>
 		
 		<?php if ( $popupHeader ) : ?>
-		<div class="uk-modal-header">
+		<div class="uk-modal-header uk-text-center">
 			<?php echo $popupHeader;?>
 		</div>		
 		<?php endif; ?>
@@ -129,7 +129,7 @@ JFactory::getDocument()->addScriptDeclaration(implode("\n", $script));
 					<i class="uk-icon-spinner uk-icon-spin uk-icon-large"></i>
 					<h3><?php echo JText::_('COM_DONORWIZ_MODAL_PLEASE_WAIT');?></h3>
 				</div>
-				<div class="layout-wrapper uk-hidden"></div>
+				<div class="layout-wrapper uk-width-1-1 uk-hidden"></div>
 			<?php else:?>
 				<?php echo JLayoutHelper::render($layoutName, $layoutParams , $layoutPath , null ); ?>
 			<?php endif;?>
