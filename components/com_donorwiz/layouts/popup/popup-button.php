@@ -108,7 +108,7 @@ JFactory::getDocument()->addScriptDeclaration(implode("\n", $script));
 
 >
 
-<i class="<?php echo $buttonIcon;?>"></i><?php echo $buttonText;?></a>
+<i class="<?php echo $buttonIcon;?>"></i> <?php echo $buttonText;?></a>
 
 <div id="modal-<?php echo $buttonID;?>" class="uk-modal" style="display:none;">
 
