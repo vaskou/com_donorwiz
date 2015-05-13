@@ -133,8 +133,7 @@ class JFormFieldDonorwizcauseareas extends JFormField
 			}
 
 			$value = (string) $option;
-
-			$disabled = (string) $option['disabled'];
+			$disabled = ( isset ($option['disabled']) ) ? (string) $option['disabled'] : false;
 			$disabled = ($disabled == 'true' || $disabled == 'disabled' || $disabled == '1');
 
 			$disabled = $disabled || ($this->readonly && $value != $this->value);
