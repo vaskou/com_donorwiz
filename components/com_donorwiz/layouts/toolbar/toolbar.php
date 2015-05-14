@@ -21,7 +21,7 @@ if ($isBeneficiaryVolunteers):
     $menuItem = $menu->getItems( 'link', 'index.php?option=com_dw_opportunities&view=dwopportunities', true );
 ?>
     
-    <a href="<?php echo JRoute::_('index.php?option=com_dw_opportunities&view=dwopportunities&Itemid='.$menuItem->id.'&created_by='.$vounteer_params['actor']);?>" class="uk-button uk-button-primary" style="border:0;">
+    <a href="<?php echo JRoute::_('index.php?option=com_dw_opportunities&view=dwopportunities&Itemid='.$menuItem->id.'&filter[created_by]='.$vounteer_params['actor']);?>" class="uk-button uk-button-primary" style="border:0;">
         <i class="uk-icon uk-icon-users"></i>
         <?php echo JText::_('COM_DONORWIZ_DASHBOARD_VOLUNTEERS'); ?>
     </a>
