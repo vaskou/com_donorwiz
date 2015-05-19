@@ -112,7 +112,7 @@ class JFormFieldDonorwizskills extends JFormField
 			// }
 
 			// Filter requirements
-			if ($requires = explode(',', (string) $option['requires']))
+			if ( isset($option['requires']) && $requires = explode(',', (string) $option['requires']))
 			{
 				// Requires multilanguage
 				if (in_array('multilanguage', $requires) && !JLanguageMultilang::isEnabled())
@@ -129,7 +129,7 @@ class JFormFieldDonorwizskills extends JFormField
 
 			$value = (string) $option;
 
-			$disabled = (string) $option['disabled'];
+			$disabled = ( isset ($option['disabled']) ) ? (string) $option['disabled'] : false;
 			$disabled = ($disabled == 'true' || $disabled == 'disabled' || $disabled == '1');
 
 			$disabled = $disabled || ($this->readonly && $value != $this->value);
