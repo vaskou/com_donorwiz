@@ -5,8 +5,8 @@ defined('_JEXEC') or die;
 require_once JPATH_COMPONENT . '/controller.php';
 
 class DonorwizControllerExport extends DonorwizController {
-
-    public function csv() {
+	
+	public function csv() {
 		
 		//Check access token
 		JSession::checkToken( ) or die( 'Invalid Token' );
@@ -44,29 +44,30 @@ class DonorwizControllerExport extends DonorwizController {
 
 			foreach ( $item as $k => $v)
 			{
-				if ( in_array($k, $fields) )
+				if ( in_array( $k , $fields) )
 				{
-					$csv = $csv.$k.";";
+					$csv = $csv . $k . ";" ;
 				}
 			}
 			
 			break;
 		}
 
-		$csv=$csv."\n";
+		$csv = $csv . "\n";
 
 		//Get the data
 		foreach ( $items as $key => $item) {
 
 			foreach ( $item as $k => $v)
 			{
-				if ( is_string( $item->$k ) && in_array($k, $fields)) 
+				if ( is_string( $item->$k ) && in_array ( $k , $fields ) ) 
 				{
-					$csv = $csv.html_entity_decode( $item->$k ).";";
+					//TO DO : escape character ; , because it is the delimeter and if it is inside the value it causes malformed columns.
+					$csv = $csv . str_replace( ';', '?' , html_entity_decode( $item->$k ) ) . ';';
 				}
 			}
 			
-			$csv=$csv."\n";
+			$csv = $csv . "\n";
 		}
 
 		echo $csv;

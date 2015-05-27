@@ -51,7 +51,13 @@ foreach ( $progressFields as $key)
 	}
 }
 
-$progress = intval ( ( $progressCurrent / $progressTotal ) * 100 );
+if ( $progressTotal !=0 )
+{
+	$progress = intval ( ( $progressCurrent / $progressTotal ) * 100 );
+}
+else{
+	$progress = 0;
+}
 
 ?>
 

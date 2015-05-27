@@ -18,7 +18,25 @@ function fn_registration_form_init(errorText)
 		
 		$('#jform_password2').val(value);
 
-	});		
+	});
+	
+	$('#jform_password1,#login_password').on('blur',function() {
+		
+		var value = $(this).val();
+		var length = value.length;
+		
+		if (length<8) {
+			$(this).val("");
+			$(this).addClass("invalid");
+			UIkit.notify({
+				message : $(this).parent().attr("title"),
+				status  : 'danger',
+				timeout : 10000,
+				pos     : 'top-center'
+			});
+		}
+	
+	});	
 	
 	$('#jform_jsfirstname,#jform_jslastname').on('input',function() {
 	

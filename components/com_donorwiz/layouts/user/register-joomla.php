@@ -65,7 +65,7 @@ if($isPopup){
 	
 	<div class="uk-form-row uk-margin-small-top">
 		<div class="uk-width-1-1">
-			<div class="uk-form-icon uk-width-1-1">
+			<div class="uk-form-icon uk-width-1-1" title="<?php echo JText::_($form->getFieldAttribute('password1','tooltip'));?>">
 				<i class="uk-icon-lock"></i>
 				<?php echo $form->getInput('password1');?>
 			</div>
