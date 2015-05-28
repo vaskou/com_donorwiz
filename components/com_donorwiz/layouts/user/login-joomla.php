@@ -34,9 +34,9 @@ JHtml::_('behavior.formvalidator');
 
 	<div class="uk-form-row uk-margin-small-top">
 		<div class="uk-width-1-1">
-			<div class="uk-form-icon uk-width-1-1">
+			<div class="uk-form-icon uk-width-1-1" title="<?php echo JText::_('COM_DONOWIZ_REGISTER_PASSWORD_TOOLTIP'); ?>">
 				<i class="uk-icon-lock"></i>
-				<input type="password" name="password" class="uk-form-large uk-width-1-1 required" required="required" placeholder="<?php echo JText::_('COM_DONORWIZ_LOGIN_PASSWORD'); ?>">
+				<input id="login_password" type="password" name="password" class="uk-form-large uk-width-1-1 required" required="required" placeholder="<?php echo JText::_('COM_DONORWIZ_LOGIN_PASSWORD'); ?>">
 			</div>
 		</div>
 	</div>	

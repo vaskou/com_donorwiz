@@ -52,8 +52,8 @@ jQuery(function($) {
 		google.maps.event.addListener( autocomplete , 'place_changed', function() {
 			
 			var place = autocomplete.getPlace();
-			
-			fillInLatLngFormFields( place.geometry.location.k , place.geometry.location.D );
+			console.log(place);
+			fillInLatLngFormFields( place.geometry.location.A , place.geometry.location.F );
 
 			
 		});
