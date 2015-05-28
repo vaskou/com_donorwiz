@@ -106,6 +106,7 @@ if($isPopup){
 <script type="text/javascript">
 jQuery(function(){
 	fn_registration_form_init('<?php echo JText::_('COM_DONOWIZ_REGISTER_RECAPTCHA_ERROR')?>');
+	jQuery('a[data-lightbox]').lightbox();
 });
 </script>
 
