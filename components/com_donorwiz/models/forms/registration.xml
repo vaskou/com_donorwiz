@@ -75,8 +75,10 @@
 			filter="raw"
 			label="COM_DONOWIZ_REGISTER_PASSWORD_LABEL"
 			hint="COM_DONOWIZ_REGISTER_PASSWORD_HINT"
+			tooltip="COM_DONOWIZ_REGISTER_PASSWORD_TOOLTIP"
 			size="30"
 			validate="password"
+			title="COM_DONOWIZ_REGISTER_PASSWORD_HINT"
 			required="true"
 		/>
 
