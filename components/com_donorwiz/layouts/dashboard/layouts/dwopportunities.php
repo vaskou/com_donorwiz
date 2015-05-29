@@ -33,30 +33,9 @@ defined('_JEXEC') or die;
 
 				// Set which view to display and add appropriate paths
 				$jinput = JFactory::getApplication()->input;
-				$jinputFilterBefore = ( is_array( $jinput->get('filter','','array') ) ) ?  $jinput->get('filter','','array')  : array() ;
-				$jinput->set( 'filter', array_replace_recursive( $jinputFilterBefore , array ( 'dashboard' =>  'true' )   ) );
-				
+				$jinput->set('dashboard', true ) ;
 				$jinput->set('view', 'dwopportunities');
 
-				$donorwizUser = new DonorwizUser( JFactory::getUser() -> id );
-		
-				//$isBeneficiary = $donorwizUser -> isBeneficiary('com_donorwiz');
-				
-				$isDonor = $donorwizUser -> isDonor();
-
-				if( $isDonor )
-				{
-					$jinputFilterBefore = ( is_array( $jinput->get('filter','','array') ) ) ?  $jinput->get('filter','','array')  : array() ;
-					$jinput->set('filter', array_replace_recursive( $jinputFilterBefore , array ( 'donor_id' =>  JFactory::getUser()->id) )   );
-					
-				}
-				else
-				{
-					$jinputFilterBefore = ( is_array( $jinput->get('filter','','array') ) ) ?  $jinput->get('filter','','array')  : array() ;
-					$jinput->set('filter', array_replace_recursive( $jinputFilterBefore , array ( 'created_by' =>  JFactory::getUser()->id) )   );
-				}
-
-				
 				JForm::addFormPath($component_path.'/models/forms');
 				JForm::addFieldPath($component_path.'/models/fields');
 

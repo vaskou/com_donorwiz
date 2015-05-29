@@ -19,7 +19,15 @@
 
 	</div>
 
+	<div class="uk-width-large-1-2 uk-width-medium-1-1">
+		<?php echo JLayoutHelper::render( 
+			'activity-stream',
+			array(), 
+			JPATH_ROOT .'/components/com_donorwiz/layouts/dashboard/widgets',
+			null 
+		); ?>
 
+	</div>
 	
 	
 </div>
