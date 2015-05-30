@@ -69,6 +69,10 @@ function fn_registration_form_init(errorText)
 			$.UIkit.notify(errorText,{status:"danger",timeout:2000,pos:"top-center"});
 		}
 	});
+	
+	$('#dw-login-form,#dw-registration-form').on('submit',function(){
+		$(this).find('button').attr('disabled','disabled');
+		$(this).css('opacity','0.5');
+	});
 
 }
-//});

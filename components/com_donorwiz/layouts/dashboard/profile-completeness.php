@@ -2,62 +2,8 @@
 
 defined('_JEXEC') or die;
 
-include_once JPATH_ROOT.'/components/com_community/libraries/core.php';
-include_once JPATH_ROOT.'/components/com_community/libraries/user.php';
-
-$user = CFactory::getUser();
-
-$profileType = $user -> getProfileType() ;
-
-$progressFields = array ( );
-
-if ( $profileType == '1' )
-{	
-	array_push( $progressFields, 'FIELD_GENDER');
-	array_push( $progressFields, 'FIELD_BIRTHDATE');
-	array_push( $progressFields, 'FIELD_MOBILE');
-	array_push( $progressFields, 'FIELD_SKILLS ');
-	array_push( $progressFields, 'FIELD_OBJECTIVE');
-	array_push( $progressFields, 'FIELD_ACTIONAREA');
-	
-	if( $user -> getInfo ('FIELD_INTERESTED_IN_DONATIONS') == '' && $user -> getInfo ('FIELD_INTERESTED_IN_INKINDDONATIONS') == '' && $user -> getInfo ('FIELD_INTERESTED_IN_VOLUNTEERS') == '')
-		array_push( $progressFields, 'FIELD_INTERESTED_IN ');
-}
-
-if ( $profileType == '2' )
-{	
-	array_push( $progressFields, 'FIELD_ABOUT');
-	array_push( $progressFields, 'FIELD_COMPANYNAME');
-	array_push( $progressFields, 'FIELD_ADDRESS');
-	array_push( $progressFields, 'FIELD_STATE');
-	array_push( $progressFields, 'FIELD_CITY');
-	array_push( $progressFields, 'FIELD_PC');
-	array_push( $progressFields, 'FIELD_LANDPHONE');
-	array_push( $progressFields, 'FIELD_WEBSITE');
-	
-	if( $user -> getInfo ('FIELD_INTERESTED_IN_DONATIONS') == '' && $user -> getInfo ('FIELD_INTERESTED_IN_INKINDDONATIONS') == '' && $user -> getInfo ('FIELD_INTERESTED_IN_VOLUNTEERS') == '')
-		array_push( $progressFields, 'FIELD_INTERESTED_IN ');
-	
-}
-
-$progressTotal = count ( $progressFields ) ;
-$progressCurrent = count ( $progressFields ) ;
-
-foreach ( $progressFields as $key) 
-{
-    if ( $user -> getInfo($key) == '' && $key != 'FIELD_INTERESTED_IN' )
-	{
-		$progressCurrent -- ;
-	}
-}
-
-if ( $progressTotal !=0 )
-{
-	$progress = intval ( ( $progressCurrent / $progressTotal ) * 100 );
-}
-else{
-	$progress = 0;
-}
+$donorwizUser = new DonorwizUser( JFactory::getUser() -> id );
+$progress = $donorwizUser -> getProfileCompletenessProgress();
 
 ?>
 

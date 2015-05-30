@@ -17,7 +17,7 @@ JHtml::_('behavior.formvalidator');
 
 ?>
 
-<form class="uk-form uk-form-horizontal form-validate" action="<?php echo JURI::base();?>" method="post">
+<form id="dw-login-form" class="uk-form uk-form-horizontal form-validate" action="<?php echo JURI::base();?>" method="post">
 
 	<div class="uk-form-row uk-text-center uk-text-muted">
 		<?php echo JText::_('COM_DONORWIZ_LOGIN_WITH_YOUR_ACCOUNT'); ?>
