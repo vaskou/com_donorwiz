@@ -36,7 +36,7 @@
 
 ?>
 <div class="uk-panel uk-panel-widget uk-panel-box uk-panel-blank">
-	
+    <h2><?php echo JText::_('COM_DONORWIZ_DASHBOARD_WIDGET_MAP_VOLUNTEERING_OPPORTUNITIES');?></h2>
 	<div 
 		id="map-canvas"
 		style="height:400px;"

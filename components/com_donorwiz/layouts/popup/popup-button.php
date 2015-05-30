@@ -30,6 +30,25 @@ foreach($scripts as $script){
 	JHtml::script($script);
 }
 
+//GET $return url
+//Load plugin params, in order to check which Itemid s will redirect to same page
+$plugin = JPluginHelper::getPlugin('system', 'donorwizredirects');
+$params = new JRegistry();
+$params ->loadString($plugin->params);
+$param =  $params->get('login_redirect_same_page', '');
+$Itemid = JFactory::getApplication()->input->get('Itemid', '0', 'int');
+
+if (in_array( $Itemid ,$param ))
+{
+	//Redirect to same page after login
+	$return =  base64_encode ( JFactory::getURI()->toString() ) ;
+}
+else
+{
+	//Redirect to dahsboard after login
+	$return =  base64_encode ( JRoute::_('index.php?Itemid='. JFactory::getApplication()->getMenu()->getItems( 'link', 'index.php?option=com_donorwiz&view=dashboard', true )->id ) );
+}
+
 $script = array();
 
 $script[] = 'jQuery(function($) {';
@@ -51,7 +70,7 @@ $script[] = '						"'.JSession::getFormToken().'":"1",';
 $script[] = '						"layout":"'.$layoutName.'",';
 $script[] = '						"layoutPath":"'.base64_encode ( $layoutPath ).'",';
 $script[] = '						"layoutParams":"'.htmlspecialchars ( json_encode( $layoutParams ) ) .'",';
-$script[] = '						"return":"'.base64_encode ( JFactory::getURI()->toString() ) .'"';
+$script[] = '						"return":"'.$return .'"';
 $script[] = '					};';
 
 $script[] = '					$.ajax({';

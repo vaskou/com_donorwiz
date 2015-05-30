@@ -38,8 +38,12 @@ $total=$moneydonationslist->fn_get_donations_sum_by_user_id($filter_array,$userI
 		</div>
 		
 		<div class="uk-width-1-1 uk-text-right uk-margin-small-top">
-			<a href="<?php echo JRoute::_('index.php?Itemid='. JFactory::getApplication()->getMenu()->getItems( 'link', 'index.php?option=com_donorwiz&view=dashboard&layout=dwdonations', true )->id );?>" class="uk-text-contrast uk-text-truncate">
+			<a href="<?php echo JRoute::_('index.php?Itemid='. JFactory::getApplication()->getMenu()->getItems( 'link', 'index.php?option=com_donorwiz&view=dashboard&layout=dwdonations', true )->id );?>" class="uk-button uk-button-link uk-text-contrast uk-button-small uk-text-truncate">
 				<?php echo JText::_('COM_DONORWIZ_DASHBOARD_VIEW_ALL');?>
+				<i class="uk-icon-chevron-right uk-margin-small-left"></i>
+			</a>
+			<a href="<?php echo JRoute::_('index.php?Itemid='. JFactory::getApplication()->getMenu()->getItems( 'link', 'index.php?option=com_dw_donations&view=dwdonationform', true )->id );?>" class="uk-button uk-button-blank uk-button-small uk-text-truncate">
+				<?php echo JText::_('COM_DONORWIZ_DASHBOARD_DONATE_NOW');?>
 				<i class="uk-icon-chevron-right uk-margin-small-left"></i>
 			</a>
 		</div>	
