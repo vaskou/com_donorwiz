@@ -35,7 +35,7 @@ foreach($scripts as $script){
 $plugin = JPluginHelper::getPlugin('system', 'donorwizredirects');
 $params = new JRegistry();
 $params ->loadString($plugin->params);
-$param =  $params->get('login_redirect_same_page', '');
+$param =  $params->get('login_redirect_same_page', array());
 $Itemid = JFactory::getApplication()->input->get('Itemid', '0', 'int');
 
 if (in_array( $Itemid ,$param ))
