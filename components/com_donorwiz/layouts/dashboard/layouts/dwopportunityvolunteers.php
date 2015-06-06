@@ -45,7 +45,7 @@ defined('_JEXEC') or die;
 				JFactory::getLanguage()->load($component, JPATH_SITE);
 
 				// And finally render the view!
-				$controller->display( 'volunteers' );
+				$controller->display();
 
 				?>
 
