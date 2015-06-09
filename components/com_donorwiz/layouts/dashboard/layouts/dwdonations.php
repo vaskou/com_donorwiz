@@ -32,8 +32,10 @@ defined('_JEXEC') or die;
 					// Set which view to display and add appropriate paths
 					$jinput = JFactory::getApplication()->input;
 					$jinput->set('view', 'dwdonations');
-					$jinput->set('dashboard', 'true');
 
+					$jinputFilterBefore = ( is_array( $jinput->get('filter','','array') ) ) ?  $jinput->get('filter','','array')  : array() ;
+					$jinput->set( 'filter', array_replace_recursive( $jinputFilterBefore , array ( 'dashboard' =>  'true' )   ) );
+				
 					JForm::addFormPath($component_path.'/models/forms');
 					JForm::addFieldPath($component_path.'/models/fields');
 

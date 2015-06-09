@@ -22,7 +22,7 @@ if ( $component )
 //Check the number of items
 $items = $displayData['items'];
 
-if ( $dashboard && $isBeneficiary & count($items) > 1 )
+if ( $dashboard && $isBeneficiary & count($items) > 0 )
 {
 	$canExport = true;
 }
