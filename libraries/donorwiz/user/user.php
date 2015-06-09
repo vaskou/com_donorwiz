@@ -12,6 +12,9 @@ class DonorwizUser extends CUser {
 	public function isBeneficiary($component)
 	{
 		$com_params = JComponentHelper::getParams($component);
+
+		if ( !$com_params->get('beneficiary_usergroups') )
+			return false;
 		
 		$com_beneficiary_usergroups = $com_params->get('beneficiary_usergroups');
 		
