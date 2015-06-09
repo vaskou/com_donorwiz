@@ -24,7 +24,7 @@ $DisplayName = $user->getDisplayName();
 	
 	<?php if ( $isDefaultAvatar ) :?>
 	<div class="uk-text-center">
-		<a href="/change-profile-picture"><?php echo JText::_('COM_DONORWIZ_DASHBOARD_CHANGE_PROFILE_AVATAR');?></a>
+		<a href="profile/change-profile-picture"><?php echo JText::_('COM_DONORWIZ_DASHBOARD_CHANGE_PROFILE_AVATAR');?></a>
 	</div>
 	<?php endif; ?>
 
