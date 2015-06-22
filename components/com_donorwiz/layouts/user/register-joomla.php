@@ -97,7 +97,6 @@ if($isPopup){
 
 	<div class="uk-form-row" data-uk-margin>
 		<button type="submit" class="validate uk-width-1-1 uk-button uk-button-primary uk-button-large"><?php echo JText::_('COM_DONOWIZ_REGISTER_SUBMIT');?></button>
-
 	</div>
 
 
