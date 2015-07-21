@@ -105,7 +105,11 @@ if($isPopup){
 <script type="text/javascript">
 jQuery(function(){
 	fn_registration_form_init('<?php echo JText::_('COM_DONOWIZ_REGISTER_RECAPTCHA_ERROR')?>');
-	jQuery('a[data-lightbox]').lightbox();
+	try{
+		jQuery('a[data-lightbox]').lightbox();
+	}catch(ex){
+		$widgetkit.load('<?php echo JUri::base().'media/widgetkit/widgets/lightbox/js/lightbox.js' ?>').done(function(){jQuery('a[data-lightbox]').lightbox()});
+	}
 });
 </script>
 
