@@ -1,37 +1,30 @@
 <?php
 $doc =& JFactory::getDocument();
 
-$hide_button=$displayData['hide_button'];
-$hide_tags=$displayData['hide_tags'];
+$url=( isset($displayData['url']) ) ? $displayData['url'] : JUri::getInstance()->toString();
 $redirect_uri=( isset($displayData['redirect_uri']) ) ? $displayData['redirect_uri'] : JUri::getInstance()->toString();
+$title=( isset($displayData['title']) ) ? $displayData['title'] : $doc->title;
 
-$tags['og:url']=( isset($displayData['og_url']) ) ? $displayData['og_url'] : JUri::getInstance()->toString();;
-$tags['og:title']=$displayData['og_title'] ;
-$tags['og:description']=$displayData['og_description'];
-$tags['og:site_name']=$displayData['og_site_name'];
-$tags['og:image']=$displayData['og_image'];
-$tags['fb:app_id']=$displayData['og_app_id'];
-$tags['og:type']=$displayData['og_type'];
-$tags['og:locale']=$displayData['og_locale'];
 
-if( $hide_tags !== true ){
-	foreach($tags as $key=>$tag){
-		if(!empty($tag)){
-			$doc->addCustomTag('<meta property="'.$key.'" content="'.$tag.'">');
-		}
-	}
-}
+$fb_link = "https://www.facebook.com/dialog/share?";
+$fb_link .= "app_id=1519342301673374";
+$fb_link .= "&display=popup";
+$fb_link .= "&href=".$url;
+$fb_link .= "&redirect_uri=".$redirect_uri;
 
-if( $hide_button !== true ){	
-	$link = "https://www.facebook.com/dialog/share?";
-	$link .= "app_id=1519342301673374";
-	$link .= "&display=popup";
-	$link .= "&href=".$tags['og:url'];
-	$link .= "&redirect_uri=".$redirect_uri;
-	
-	echo '<div class="dw-social">';
-	echo '<a href="'.$link.'" >Share</a>';
-	echo '</div>';
-}
+echo '<div class="dw-social">';
+echo '	<a href="'.$fb_link.'" class="uk-button uk-button-primary"><i class="uk-icon-facebook"></i> Share</a>';
+
+
+$tweet_link = "https://twitter.com/intent/tweet?";
+$tweet_link .= "text=".urlencode($title);
+$tweet_link .= "&url=".urlencode($url);
+
+$doc->addScript("//platform.twitter.com/widgets.js","text/javascript",false,true);
+echo '	<a href="'.$tweet_link.'" class="uk-button uk-button-primary"><i class="uk-icon-twitter"></i> Tweet</a>';
+
+echo '</div>';
+
+
 
 ?>
